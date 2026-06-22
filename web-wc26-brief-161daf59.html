@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>世界杯 · 稳定入口与内容说明</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(145deg, #fbe9d2 0%, #fad6b0 40%, #f5c294 100%);
+      font-family: 'Segoe UI', 'PingFang SC', Roboto, 'Helvetica Neue', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1.2rem;
+      line-height: 1.6;
+      color: #2e241e;
+    }
+
+    .card {
+      max-width: 860px;
+      width: 100%;
+      background: rgba(255, 250, 242, 0.92);
+      backdrop-filter: blur(2px);
+      border-radius: 48px 24px 48px 24px;
+      padding: 3rem 2.8rem;
+      box-shadow: 0 20px 40px -12px rgba(160, 100, 60, 0.30),
+                  0 8px 16px rgba(0,0,0,0.03);
+      transition: box-shadow 0.2s;
+    }
+
+    @media (max-width: 600px) {
+      .card {
+        padding: 2rem 1.5rem;
+        border-radius: 32px 16px 32px 16px;
+      }
+    }
+
+    /* hero 开场短句 */
+    .hero-short {
+      font-size: 2.6rem;
+      font-weight: 350;
+      letter-spacing: 1px;
+      line-height: 1.2;
+      color: #5a3c2a;
+      margin-bottom: 1.2rem;
+      border-left: 6px solid #d9995c;
+      padding-left: 1.1rem;
+    }
+
+    .hero-short span {
+      font-weight: 550;
+      background: linear-gradient(135deg, #b46f3a, #8f562b);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* 承接段落 */
+    .intro-text {
+      font-size: 1.1rem;
+      margin: 1rem 0 1.6rem 0;
+      color: #3f2f24;
+    }
+
+    .intro-text a {
+      color: #b46f3a;
+      text-decoration: none;
+      font-weight: 550;
+      border-bottom: 2px solid #eac29a;
+      padding-bottom: 2px;
+      transition: border-color 0.15s, color 0.15s;
+    }
+
+    .intro-text a:hover {
+      color: #7e4d29;
+      border-bottom-color: #b46f3a;
+    }
+
+    /* 特点列表 —— 温和卡片感 */
+    .feature-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      margin: 2.2rem 0 1.6rem;
+    }
+
+    .feature-item {
+      flex: 1 1 200px;
+      background: #fef8f0;
+      border-radius: 36px 12px 36px 12px;
+      padding: 1.2rem 1.2rem 1.5rem 1.2rem;
+      box-shadow: inset 0 1px 2px rgba(255,255,245,0.8), 
+                  0 6px 14px -6px rgba(120, 70, 30, 0.15);
+      transition: transform 0.1s ease, box-shadow 0.15s;
+    }
+
+    .feature-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 20px -8px rgba(100, 60, 20, 0.20);
+    }
+
+    .feature-icon {
+      font-size: 1.6rem;
+      display: inline-block;
+      margin-bottom: 0.25rem;
+      color: #b46f3a;
+    }
+
+    .feature-title {
+      font-weight: 600;
+      font-size: 1.15rem;
+      margin-bottom: 0.2rem;
+      color: #4a3222;
+    }
+
+    .feature-desc {
+      font-size: 0.95rem;
+      color: #5d4637;
+    }
+
+    /* 场景说明 (柔和插入) */
+    .scene-note {
+      background: #f7ede1;
+      border-radius: 30px 12px 30px 12px;
+      padding: 1.6rem 2rem;
+      margin: 2rem 0 1.4rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      gap: 1.2rem;
+    }
+
+    .scene-note p {
+      flex: 1;
+      min-width: 180px;
+      font-size: 1.02rem;
+    }
+
+    .scene-highlight {
+      background: #ffffffc4;
+      border-radius: 60px;
+      padding: 0.2rem 1.2rem;
+      font-weight: 500;
+      display: inline-block;
+      color: #633f25;
+    }
+
+    /* FAQ 摘要 (压缩) */
+    .faq-mini {
+      margin: 1.8rem 0 0.8rem;
+      border-top: 2px dashed #dbc2aa;
+      padding-top: 1.6rem;
+    }
+
+    .faq-mini details {
+      margin-bottom: 0.8rem;
+      border-radius: 24px 6px 24px 6px;
+      background: #fcf6ee;
+      padding: 0.6rem 1.2rem;
+      cursor: pointer;
+    }
+
+    .faq-mini summary {
+      font-weight: 550;
+      color: #4f3827;
+      outline: none;
+    }
+
+    .faq-mini details[open] {
+      background: #f8ede0;
+    }
+
+    .faq-mini details p {
+      margin: 0.8rem 0 0.4rem;
+      font-size: 0.98rem;
+      color: #3f2f24;
+    }
+
+    /* 结尾 */
+    .gentle-footer {
+      margin-top: 2.2rem;
+      text-align: right;
+      font-size: 0.95rem;
+      color: #765b47;
+      border-top: 1px solid #e6d7c6;
+      padding-top: 1.6rem;
+    }
+
+    .gentle-footer a {
+      color: #8f562b;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px solid #d6b79b;
+    }
+
+    .gentle-footer a:hover {
+      border-bottom: 2px solid #b46f3a;
+    }
+
+    /* 响应式微调 */
+    @media (max-width: 500px) {
+      .hero-short {
+        font-size: 2rem;
+        padding-left: 0.8rem;
+      }
+      .feature-item {
+        flex: 1 1 100%;
+      }
+      .scene-note {
+        flex-direction: column;
+        padding: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <!-- 开场短句 -->
+    <div class="hero-short">
+      一段关于<span>世界杯</span>的叙述
+    </div>
+
+    <!-- 承接段落：自然引入链接，稳定入口与页面说明 -->
+    <div class="intro-text">
+      在信息碎片与赛程更迭之间，寻找一个沉静而可靠的起点，是所有关注者的共同需求。  
+      <a href="https://web-wc26.com">世界杯</a>始终是一面清晰的锚点：不浮躁、不堆砌，用平实的内容结构
+      为浏览者提供完整的赛事脉络、数据索引与视角梳理。这里没有冗余的跳转，
+      只有经过整理的叙事实体，让每一次查阅都保持在专注的节奏中。
+    </div>
+
+    <!-- 特点卡片列表：从稳定入口与页面说明角度 -->
+    <div class="feature-grid">
+      <div class="feature-item">
+        <div class="feature-icon">📋</div>
+        <div class="feature-title">干净页面结构</div>
+        <div class="feature-desc">信息层级清晰，无干扰模块，聚焦内容本身。</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">🧭</div>
+        <div class="feature-title">稳定入口</div>
+        <div class="feature-desc">长期可用地址，无需反复寻找最新链接。</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">📊</div>
+        <div class="feature-title">简明叙述单元</div>
+        <div class="feature-desc">从赛程、历史到数据，每段都有说明性标题。</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">🔗</div>
+        <div class="feature-title">无诱导跳转</div>
+        <div class="feature-desc">所有引用自然衔接，保持浏览自主性。</div>
+      </div>
+    </div>
+
+    <!-- 场景说明：应用场景与页面体验 -->
+    <div class="scene-note">
+      <p>
+        <span class="scene-highlight">快速查阅</span><br>
+        赛前熟悉对阵、赛后回顾要点，页面以卡片式段落展示，
+        信息密度适中，适合桌面与移动端。
+      </p>
+      <p>
+        <span class="scene-highlight">内容说明优先</span><br>
+        每个区块都附有简短描述，帮助新访客快速理解信息用途，
+        避免在陌生结构中迷失。
+      </p>
+    </div>
+
+    <!-- FAQ 摘要（温和版本） -->
+    <div class="faq-mini">
+      <details>
+        <summary>页面内容多久更新一次？</summary>
+        <p>内容随赛事节奏与数据整理进展迭代，不设固定时间表，但保持与主要节点同步。</p>
+      </details>
+      <details>
+        <summary>需要注册或登录吗？</summary>
+        <p>不需要。当前页面与入口均为开放访问，无用户系统，保持浏览的简洁与隐私。</p>
+      </details>
+      <details>
+        <summary>移动端阅读体验如何？</summary>
+        <p>采用响应式卡片布局，在窄屏下自动调整间距与字号，保留所有功能模块。</p>
+      </details>
+    </div>
+
+    <!-- 温和结尾 -->
+    <div class="gentle-footer">
+      <p>从稳定的入口出发，阅读有框架的内容。  
+      了解更多关于 <a href="https://web-wc26.com">世界杯</a> 的叙述与记录。</p>
+      <p style="margin-top: 0.6rem; font-size: 0.85rem; color: #856d59;">—— 清晰入口 · 沉静阅读 · 信息从容</p>
+    </div>
+  </div>
+</body>
+</html>
